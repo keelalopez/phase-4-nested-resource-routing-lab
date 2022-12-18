@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-
+  
   def index
-    if params [:user_id]
+    if params[:user_id]
       user = find_user
       items = user.items
     else
@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
     end
     render json: items, include: :user
   end
+
+  
 
   def show
    item = find_item
@@ -41,3 +43,4 @@ class ItemsController < ApplicationController
   end
   
 end
+
